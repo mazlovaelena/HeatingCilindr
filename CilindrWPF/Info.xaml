@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="CilindrWPF.Info"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CilindrWPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="690" d:DesignWidth="950">
+    <Grid>
+        <StackPanel>
+            <RichTextBox Height="690" Width="950" Background="#F6F6F6" IsReadOnly="True" Margin="0,10,0,10">
+                <FlowDocument FontSize="21">
+                    <Paragraph TextAlignment="Justify">
+                        <Run Text="Нагрев или охлаждение любого твердого тела сопровождается изменением его температурного поля в течение времени воздействия на тело теплового потока. Это явление носит название нестационарной теплопроводности. Решение инженерных задач нестационарной теплопроводности связано с определением температурного поля тела при заданном времени воздействия теплового потока или нахождением времени тепловой обработки тела при достижении температурные полем заданного по технологии значения. Такие задачи решают с помощью дифференциального уравнения теплопроводности Фурье, вид которого зависит от формы тела и применяемой системы координат.">
+                            
+                        </Run>
+                    </Paragraph>
+                    <Paragraph TextAlignment="Justify">
+                        <Run Text="Математическая модель решения поставленной задачи реализуется на основе методики расчета нагрева неограниченного цилиндра при граничных условиях III рода. Граничные условия III рода устанавливают зависимость плотности теплового потока вследствие теплопроводности тела от температуры поверхности тела и окружающей среды:"></Run>
+                    </Paragraph>
+                    <Paragraph TextAlignment="Center" FontStyle="Italic">
+                        <Run Text="q_пов=α_∑∙(t_ср-t_пов ),">                            
+                        </Run>
+                    </Paragraph>
+                    <Paragraph TextAlignment="Left">
+                        <Run Text="где αΣ - суммарный коэффициент теплообмена между средой и поверхностью тела; 
+tср - температура среды; 
+tпов - температура поверхности тела.
+">
+                            
+                        </Run>
+                    </Paragraph>
+                    <Paragraph TextAlignment="Justify">
+                        <Run Text="Данное ПО предназначено для автоматизации рутинных операций, необходимых для решения задачи расчета нагрева цилиндрических заготовок различных размеров и материалов при граничных условиях 3-го рода, расчета необходимого времени нагрева и подготовки отчетной документации."></Run>
+                    </Paragraph>
+                </FlowDocument>
+        </RichTextBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

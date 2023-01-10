@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="CilindrWPF.TempInitial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CilindrWPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="690" d:DesignWidth="950">
+    <Grid Background="#F6F6F6">
+        <StackPanel>
+            <Label Content="Радиус цилиндра r, м" HorizontalAlignment="Left" Margin="70,65,0,0" FontSize="18"></Label>
+            <TextBox x:Name="R" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <Label Content="Материал цилиндра" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
+            <ComboBox x:Name="material" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0">
+                <TextBlock>Чугун</TextBlock>
+                <TextBlock>Сталь</TextBlock>
+                <TextBlock>Олово</TextBlock>
+                <TextBlock>Свинец</TextBlock>
+            </ComboBox>
+            <Label Content="Коэффициент теплопроводности материала цилиндра λм, Вт/(м*К)" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
+            <TextBox x:Name="lamdaM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <Label Content="Теплоемкость материала цилиндра См, Дж/(кг*К)" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
+            <TextBox x:Name="cM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <Label Content="Плотность материала цилиндра ρм, кг/м3" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
+            <TextBox x:Name="roM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <Label Content="Коэффициент теплоотдачи α, Вт/(м2*К)" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
+            <TextBox x:Name="alfa" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <Label Content="Время нагрева цилиндра τ, с" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
+            <TextBox x:Name="t" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+
+            <Button x:Name="CalcTemp" Content="Расчет" HorizontalAlignment="Center" Margin="0,55,0,0" FontSize="20" Background="DarkRed" Width="250" Height="45" BorderBrush="DarkRed"></Button>
+            
+        </StackPanel>
+    </Grid>
+</UserControl>
