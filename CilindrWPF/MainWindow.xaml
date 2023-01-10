@@ -6,21 +6,20 @@
         xmlns:local="clr-namespace:CilindrWPF"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow"
-        Title="Расчет нагрева цилиндра" Height="800" Width="1000">
+        WindowStartupLocation="CenterScreen"
+        Title="Расчет нагрева цилиндра" Height="800" Width="1000" Icon="/icon.ico">
     <Grid Background="#787878	">
         <StackPanel>
             <Button x:Name="Info" Content="Информация" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Background="#CCCCCC" Margin="5,5,5,5" Width="320" Foreground="Black" BorderBrush="#CCCCCC" FontSize="18"></Button>
             <Button x:Name="Temp" Content="Расчет температуры нагрева" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="2" Grid.ColumnSpan="2" Background="#CCCCCC" Foreground="Black" Width="320" Margin="0,-37,0, 0" Cursor="Hand" BorderBrush="#CCCCCC" FontSize="18"></Button>
             <Button x:Name="Time" Content="Расчет времени нагрева" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="3" Grid.ColumnSpan="2" Width="320" Margin="0, -37, 5, 0" Background="#CCCCCC" Foreground="Black" Cursor="Hand" BorderBrush="#CCCCCC" FontSize="18"></Button>
+           
+            <local:Info x:Name="Inform" VerticalAlignment="Center" Visibility="Visible" Width="980" Height="690" Margin="2,2,2,2"></local:Info>
+            <local:TempInitial x:Name="TempHeat" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,2,2,2"></local:TempInitial>
+            <local:TimeInitial x:Name="TimeHeat" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,2,2,2"></local:TimeInitial>
 
-
-            <Border Margin="5,5, 5, 5" Background="#F6F6F6" VerticalAlignment="Bottom" CornerRadius="15">
-                <local:Info x:Name="Inform" VerticalAlignment="Center" Visibility="Visible" Width="980" Height="690" Margin="2,2,2,2"></local:Info>
-                <local:TempInitial x:Name="TempHeat" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,2,2,2"></local:TempInitial>
-            </Border>
-
-            
+            <local:ResultTemp x:Name="TempResult" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,2,2,2"></local:ResultTemp>
+            <local:ResultTime x:Name="TimeResult" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,2,2,2"></local:ResultTime>
         </StackPanel>
     </Grid>
 </Window>
