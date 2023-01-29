@@ -7,10 +7,23 @@ using System.Threading.Tasks;
 
 namespace MathLib_Cilindr
 {
+    [Serializable]
     public class Formules
     {
-
-
+        public Formules(double _r, double _lamdaM, double _cM, double _roM, double _alfa, double _t, string _material, double _tp, double _tend, double _tbegin)
+        {
+            r = _r;
+            lamdaM = _lamdaM;
+            cM = _cM;
+            roM = _roM;
+            alfa = _alfa;
+            t = _t;
+            material = _material;
+            t_p = _tp;
+            t_end = _tend;
+            t_beg = _tbegin;
+        }
+       
         #region ИСХОДНЫЕ ДАННЫЕ (ПРЯМАЯ ЗАДАЧА)
         //ИСХОДНЫЕ ДАННЫЕ (РАСЧЕТ ТЕМПЕРАТУР НАГРЕВА ЦИЛИНДРА)
 
@@ -163,33 +176,24 @@ namespace MathLib_Cilindr
         }
         #endregion ИСХОДНЫЕ ДАННЫЕ (ОБРАТНАЯ ЗАДАЧА)
 
-        public static Formules GetData()
-        {
-            return new Formules
-            {
-                _r = 0.055,
-                _lamdaM = 42,
-                _cM = 712,
-                _roM = 7860,
-                _alfa = 525,
-                _t = 581,
-                _t_beg = 20,
-                _t_end = 1200,
-                _tp = 1420,
-                _material = "Сталь"
+        //public static Formules GetData()
+        //{
+        //    return new Formules
+        //    {
+        //        _r = 0.055,
+        //        _lamdaM = 42,
+        //        _cM = 712,
+        //        _roM = 7860,
+        //        _alfa = 525,
+        //        _t = 581,
+        //        _t_beg = 20,
+        //        _t_end = 1200,
+        //        _tp = 1420,
+        //        _material = "Сталь"
 
-            };
-        }
-
-        public static Formules formules { get; set; } = GetData();
-
-        public static FieldInfo[] GetFieldInfo()
-        {
-            FieldInfo[] fields = typeof(Formules).GetFields();
-
-            return fields;
-        }
-
+        //    };
+        //}
+        
         #region ВЫБОР ПАРАМЕТРОВ ЧИСЛА БИО
         public void Search()
         {
@@ -668,7 +672,7 @@ namespace MathLib_Cilindr
         /// </summary>
         public double Bi()
         {
-            _Bi = Math.Round(((formules._alfa * formules._r) / formules._lamdaM), 1);
+            _Bi = Math.Round(((_alfa * _r) / _lamdaM), 1);
             return _Bi;
         }
 
@@ -678,7 +682,7 @@ namespace MathLib_Cilindr
         /// </summary>
         public double A()
         {
-            _A = formules._lamdaM / (formules._cM * formules._roM);
+            _A = _lamdaM / (_cM * _roM);
             return _A;
         }
 
@@ -688,7 +692,7 @@ namespace MathLib_Cilindr
         /// </summary>
         public double Fo()
         {
-            _Fo = (_A * formules._t) / Math.Pow(formules._r, 2);
+            _Fo = (_A * _t) / Math.Pow(_r, 2);
             return _Fo;
         }
         #endregion ПРОМЕЖУТОЧНЫЙ РАСЧЕТ
@@ -744,7 +748,7 @@ namespace MathLib_Cilindr
         public double Temp_DiffSurface()
         {
 
-            _T_DS = (formules._tp - formules._t_end) / (formules._tp - formules._t_beg);
+            _T_DS = (_tp - _t_end) / (_tp - _t_beg);
             return _T_DS;
         }
 
@@ -755,11 +759,17 @@ namespace MathLib_Cilindr
         public double Time_heath()
         {
             Search();
-            _TH = (Math.Pow(formules._r, 2) / (_A * _mu)) * Math.Log(_Rc / _T_DS);
+            _TH = (Math.Pow(_r, 2) / (_A * _mu)) * Math.Log(_Rc / _T_DS);
             return _TH;
         }
 
         #endregion РАСЧЕТ ВРЕМЕНИ НАГРЕВА ЦИЛИНДРА
-    
+
+        public static FieldInfo[] GetFieldInfo()
+        {
+            FieldInfo[] fields = typeof(Formules).GetFields();
+
+            return fields;
+        }
     }
 }

@@ -11,18 +11,18 @@
             <Label Content="Радиус цилиндра r, м" HorizontalAlignment="Left" Margin="70,65,0,0" FontSize="18"></Label>
             <TextBox x:Name="R" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
             <Label Content="Материал цилиндра" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <ComboBox x:Name="material" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0">
-                <TextBlock>Чугун</TextBlock>
-                <TextBlock>Сталь</TextBlock>
-                <TextBlock>Олово</TextBlock>
-                <TextBlock>Свинец</TextBlock>
+            <ComboBox x:Name="material" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" SelectionChanged="material_SelectionChanged">
+                <ComboBoxItem Name="Stal">Сталь</ComboBoxItem>
+                <ComboBoxItem Name="Chugun">Чугун</ComboBoxItem>
+                <ComboBoxItem Name="Olovo">Олово</ComboBoxItem>
+                <ComboBoxItem Name="Svinec">Свинец</ComboBoxItem>
             </ComboBox>
             <Label Content="Коэффициент теплопроводности материала цилиндра λм, Вт/(м*К)" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="lamdaM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="lamdaM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Теплоемкость материала цилиндра См, Дж/(кг*К)" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="cM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="cM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Плотность материала цилиндра ρм, кг/м3" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="roM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="roM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Коэффициент теплоотдачи α, Вт/(м2*К)" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
             <TextBox x:Name="alfa" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
             <Label Content="Время нагрева цилиндра τ, с" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>

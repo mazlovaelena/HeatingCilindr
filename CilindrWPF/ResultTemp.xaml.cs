@@ -1,6 +1,7 @@
 ﻿using MathLib_Cilindr;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,29 +33,21 @@ namespace CilindrWPF
 
         public TempInitial Initial;
 
-        public void ReportInit()
-        {
-            try
-            {
-                Serialize();
-
-                Formules.Bi();
-                Formules.A();
-                Formules.Fo();
-                Formules.TempDiff_Surface();
-                Formules.TempDiff_Mass();
-                Formules.TempDiff_Centr();
-
-                GetCountValues();
-
-               
-            }
-            catch {}
-        }
-
         public ResultTemp()
         {
             InitializeComponent();
+
+            Serialize();
+
+            //Formules.Bi();
+            //Formules.A();
+            //Formules.Fo();
+            //Formules.TempDiff_Surface();
+            //Formules.TempDiff_Mass();
+            //Formules.TempDiff_Centr();
+
+            //GetCountValues();
+            
         }
 
         public int Valid(string s)
@@ -73,18 +66,17 @@ namespace CilindrWPF
         {
             FieldInfo[] fields = Formules.GetFieldInfo();
 
-            Dictionary<string, object> Data = new Dictionary<string, object>();
+            Dictionary<string, object> Data = new();
 
             foreach (FieldInfo Info in fields)
             {
                 Data.Add(Info.Name, Info.GetValue(Formules));
             }
 
-            JsonSerializer formatter = new JsonSerializer();
-            using (StreamWriter fs = new StreamWriter("InputTemp.txt"))
-            {
-                formatter.Serialize(fs, Data);
-            }
+            JsonSerializer formatter = new();
+
+            using StreamWriter fs = new("InputTemp.txt");
+            formatter.Serialize(fs, Data);
         }
 
         public void GetCountValues()

@@ -9,17 +9,17 @@
     <Grid Background="#F6F6F6">
         <StackPanel>
             <Label Content="Число теплового подобия Bi" HorizontalAlignment="Left" Margin="70,65,0,0" FontSize="18"></Label>
-            <TextBox x:Name="Bi" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="Bi" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Коэффициент температуропроводности материала а, м2/с" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="A" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="A" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Число подобия Фурье Fo" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="Fo" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="Fo" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Относительная разность температур для оси цилиндра Θс" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="TDC" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="TDC" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Относительная разность температур для массы цилиндра Θм" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="TDM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="TDM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Относительная разность температур на поверхности цилиндра Θп" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="TDS" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="TDS" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
 
             <Button x:Name="ReportTemp" Content="Сохранить отчет" HorizontalAlignment="Center" Margin="0,55,0,0" FontSize="20" Background="DarkRed" Width="250" Height="45" BorderBrush="DarkRed" Click="ReportTemp_Click"></Button>
 

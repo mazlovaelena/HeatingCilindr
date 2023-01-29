@@ -36,6 +36,7 @@ namespace CilindrWPF
 
         public Formules Formules;
         public ResultTemp TempHeat;
+       
 
         public int Valid(string s)
         {
@@ -116,7 +117,34 @@ namespace CilindrWPF
             }
         }
 
-
+        private void material_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(material.SelectedItem == Stal)
+            {
+                lamdaM.Text = Convert.ToString(42);
+                cM.Text = Convert.ToString(712);
+                roM.Text = Convert.ToString(7860);
+            }
+            else if(material.SelectedItem == Chugun)
+            {
+                lamdaM.Text = Convert.ToString(62.8);
+                cM.Text = Convert.ToString(541);
+                roM.Text = Convert.ToString(7000);
+            }
+            else if (material.SelectedItem == Olovo)
+            {
+                lamdaM.Text = Convert.ToString(66.11);
+                cM.Text = Convert.ToString(234);
+                roM.Text = Convert.ToString(7300);
+            }
+            else if(material.SelectedItem == Svinec)
+            {
+                lamdaM.Text = Convert.ToString(33.4);
+                cM.Text = Convert.ToString(140);
+                roM.Text = Convert.ToString(11300);
+            }
+            
+        }
         public void GetSourceValues()
         {
             double _r = Convert.ToDouble(R.Text);
@@ -126,17 +154,12 @@ namespace CilindrWPF
             double _roM = Convert.ToDouble(roM.Text);
             double _alfa = Convert.ToDouble(alfa.Text);
             double _t = Convert.ToDouble(t.Text);
-                
-            Formules = new Formules
-            {
-                r = _r,
-                material = _material,
-                lamdaM = _lamdaM,
-                cM = _cM,
-                roM = _roM,
-                alfa = _alfa,   
-                t = _t,
-            };
+            double _tp = 0;
+            double _tbegin = 0;
+            double _tend = 0;
+
+            Formules = new Formules(_r, _lamdaM, _cM, _roM, _alfa, _t, _material, _tp, _tend, _tbegin);
+         
         }
 
         public void GetDefaultValues()
@@ -203,6 +226,9 @@ namespace CilindrWPF
                 TempHeat.GetCountValues();
 
             }
+           
         }
+
+        
     }
 }
