@@ -21,7 +21,7 @@
             <Label Content="Относительная разность температур на поверхности цилиндра Θп" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
             <TextBox x:Name="TDS" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0"></TextBox>
 
-            <Button x:Name="ReportTemp" Content="Сохранить отчет" HorizontalAlignment="Center" Margin="0,55,0,0" FontSize="20" Background="DarkRed" Width="250" Height="45" BorderBrush="DarkRed"></Button>
+            <Button x:Name="ReportTemp" Content="Сохранить отчет" HorizontalAlignment="Center" Margin="0,55,0,0" FontSize="20" Background="DarkRed" Width="250" Height="45" BorderBrush="DarkRed" Click="ReportTemp_Click"></Button>
 
         </StackPanel>
     </Grid>

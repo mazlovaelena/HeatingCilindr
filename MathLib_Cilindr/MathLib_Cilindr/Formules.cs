@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace MathLib_Cilindr
 {
     public class Formules
     {
+
+
         #region ИСХОДНЫЕ ДАННЫЕ (ПРЯМАЯ ЗАДАЧА)
         //ИСХОДНЫЕ ДАННЫЕ (РАСЧЕТ ТЕМПЕРАТУР НАГРЕВА ЦИЛИНДРА)
 
@@ -179,6 +182,13 @@ namespace MathLib_Cilindr
         }
 
         public static Formules formules { get; set; } = GetData();
+
+        public static FieldInfo[] GetFieldInfo()
+        {
+            FieldInfo[] fields = typeof(Formules).GetFields();
+
+            return fields;
+        }
 
         #region ВЫБОР ПАРАМЕТРОВ ЧИСЛА БИО
         public void Search()

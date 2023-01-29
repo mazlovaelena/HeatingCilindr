@@ -28,7 +28,7 @@
             <Label Content="Время нагрева цилиндра τ, с" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
             <TextBox x:Name="t" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
 
-            <Button x:Name="CalcTemp" Content="Расчет" HorizontalAlignment="Center" Margin="0,55,0,0" FontSize="20" Background="DarkRed" Width="250" Height="45" BorderBrush="DarkRed"></Button>
+            <Button x:Name="CalcTemp" Content="Расчет" HorizontalAlignment="Center" Margin="0,55,0,0" FontSize="20" Background="DarkRed" Width="250" Height="45" BorderBrush="DarkRed" Click="CalcTemp_Click"></Button>
             
         </StackPanel>
     </Grid>

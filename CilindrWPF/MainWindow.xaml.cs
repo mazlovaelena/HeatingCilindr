@@ -24,7 +24,66 @@ namespace CilindrWPF
         {
             InitializeComponent();
 
+            TempHeat.TempHeat = TempResult;
+            TempResult.Initial = TempHeat;
+        }
 
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+            Inform.Visibility = Visibility.Visible;
+            TempHeat.Visibility = Visibility.Hidden;
+            TimeHeat.Visibility = Visibility.Hidden;
+            TempResult.Visibility = Visibility.Hidden;
+            TimeResult.Visibility = Visibility.Hidden;
+            Temp.Visibility = Visibility.Visible;
+            TempRes.Visibility = Visibility.Hidden;
+            Time.Visibility = Visibility.Visible;
+            TimeRes.Visibility = Visibility.Hidden;
+        }
+
+        private void Temp_Click(object sender, RoutedEventArgs e)
+        {
+            Inform.Visibility = Visibility.Hidden;
+            TempHeat.Visibility = Visibility.Visible;
+            TimeHeat.Visibility = Visibility.Hidden;
+            TempResult.Visibility = Visibility.Hidden;
+            TimeResult.Visibility = Visibility.Hidden;
+            Temp.Visibility = Visibility.Hidden;
+            TempRes.Visibility = Visibility.Visible;
+        }
+
+        private void Time_Click(object sender, RoutedEventArgs e)
+        {
+            Inform.Visibility = Visibility.Hidden;
+            TempHeat.Visibility = Visibility.Hidden;
+            TimeHeat.Visibility = Visibility.Visible;
+            TempResult.Visibility = Visibility.Hidden;
+            TimeResult.Visibility = Visibility.Hidden;
+            Time.Visibility = Visibility.Hidden;
+            TimeRes.Visibility = Visibility.Visible;
+        }
+
+
+        private void TempRes_Click(object sender, RoutedEventArgs e)
+        {
+            Inform.Visibility = Visibility.Hidden;
+            TempHeat.Visibility = Visibility.Hidden;
+            TimeHeat.Visibility = Visibility.Hidden;
+            TempResult.Visibility = Visibility.Visible;
+            TimeResult.Visibility = Visibility.Hidden;
+            Temp.Visibility = Visibility.Visible;
+            TempRes.Visibility = Visibility.Hidden;
+        }
+
+        private void TimeRes_Click(object sender, RoutedEventArgs e)
+        {
+            Inform.Visibility = Visibility.Hidden;
+            TempHeat.Visibility = Visibility.Hidden;
+            TimeHeat.Visibility = Visibility.Hidden;
+            TempResult.Visibility = Visibility.Hidden;
+            TimeResult.Visibility = Visibility.Visible;
+            Time.Visibility = Visibility.Visible;
+            TimeRes.Visibility = Visibility.Hidden;
         }
     }
 }

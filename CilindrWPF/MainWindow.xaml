@@ -10,16 +10,22 @@
         Title="Расчет нагрева цилиндра" Height="800" Width="1000" Icon="/icon.ico">
     <Grid Background="#787878	">
         <StackPanel>
-            <Button x:Name="Info" Content="Информация" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Background="#CCCCCC" Margin="5,5,5,5" Width="320" Foreground="Black" BorderBrush="#CCCCCC" FontSize="18"></Button>
-            <Button x:Name="Temp" Content="Расчет температуры нагрева" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="2" Grid.ColumnSpan="2" Background="#CCCCCC" Foreground="Black" Width="320" Margin="0,-37,0, 0" Cursor="Hand" BorderBrush="#CCCCCC" FontSize="18"></Button>
-            <Button x:Name="Time" Content="Расчет времени нагрева" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="3" Grid.ColumnSpan="2" Width="320" Margin="0, -37, 5, 0" Background="#CCCCCC" Foreground="Black" Cursor="Hand" BorderBrush="#CCCCCC" FontSize="18"></Button>
+            
+            <Button x:Name="Info" Content="Информация" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Background="#CCCCCC" Margin="5,5,5,5" Width="320" Foreground="Black" BorderBrush="#CCCCCC" FontSize="18" Click="Info_Click" Cursor="Hand"></Button>
+            
+            <Button x:Name="Temp" Content="Расчет температуры нагрева" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="2" Grid.ColumnSpan="2" Background="#CCCCCC" Foreground="Black" Width="320" Margin="0,-37,0, 0" Cursor="Hand" BorderBrush="#CCCCCC" FontSize="18" Click="Temp_Click"></Button>
+            <Button x:Name="TempRes" Content="Результаты расчета" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="2" Grid.ColumnSpan="2" Background="#CCCCCC" Foreground="Black" Width="320" Margin="0,-37,0, 0" Cursor="Hand" BorderBrush="#CCCCCC" FontSize="18" Click="TempRes_Click"></Button>
+            
+            <Button x:Name="Time" Content="Расчет времени нагрева" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="3" Grid.ColumnSpan="2" Width="320" Margin="0, -37, 5, 0" Background="#CCCCCC" Foreground="Black" Cursor="Hand" BorderBrush="#CCCCCC" FontSize="18" Click="Time_Click"></Button>
+            <Button x:Name="TimeRes" Content="Результаты расчета" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="3" Grid.ColumnSpan="2" Width="320" Margin="0, -37, 5, 0" Background="#CCCCCC" Foreground="Black" Cursor="Hand" BorderBrush="#CCCCCC" FontSize="18" Click="TimeRes_Click"></Button>
            
             <local:Info x:Name="Inform" VerticalAlignment="Center" Visibility="Visible" Width="980" Height="690" Margin="2,2,2,2"></local:Info>
-            <local:TempInitial x:Name="TempHeat" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,2,2,2"></local:TempInitial>
-            <local:TimeInitial x:Name="TimeHeat" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,2,2,2"></local:TimeInitial>
+            <local:TempInitial x:Name="TempHeat" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,-700,2,0"></local:TempInitial>
+            <local:TimeInitial x:Name="TimeHeat" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,-700,2,0"></local:TimeInitial>
 
-            <local:ResultTemp x:Name="TempResult" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,2,2,2"></local:ResultTemp>
-            <local:ResultTime x:Name="TimeResult" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,2,2,2"></local:ResultTime>
+            <local:ResultTemp x:Name="TempResult" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,-700,2,0"></local:ResultTemp>
+            <local:ResultTime x:Name="TimeResult" VerticalAlignment="Center" Visibility="Hidden" Width="980" Height="690" Margin="2,-700,2,0"></local:ResultTime>
+        
         </StackPanel>
     </Grid>
 </Window>
