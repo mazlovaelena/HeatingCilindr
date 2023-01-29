@@ -175,25 +175,7 @@ namespace MathLib_Cilindr
             set { _t_beg = value; }
         }
         #endregion ИСХОДНЫЕ ДАННЫЕ (ОБРАТНАЯ ЗАДАЧА)
-
-        //public static Formules GetData()
-        //{
-        //    return new Formules
-        //    {
-        //        _r = 0.055,
-        //        _lamdaM = 42,
-        //        _cM = 712,
-        //        _roM = 7860,
-        //        _alfa = 525,
-        //        _t = 581,
-        //        _t_beg = 20,
-        //        _t_end = 1200,
-        //        _tp = 1420,
-        //        _material = "Сталь"
-
-        //    };
-        //}
-        
+       
         #region ВЫБОР ПАРАМЕТРОВ ЧИСЛА БИО
         public void Search()
         {
@@ -700,8 +682,6 @@ namespace MathLib_Cilindr
         #region РАСЧЕТ НАГРЕВА ЦИЛИНДРА
 
         //РАСЧЕТ НАГРЕВА ЦИЛИНДРА
-
-
 
         private double _TDS;
         /// <summary>

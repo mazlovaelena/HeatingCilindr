@@ -1,26 +1,14 @@
 ﻿using MathLib_Cilindr;
 using Microsoft.Win32;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SpreadsheetLight;
-
-
 
 namespace CilindrWPF
 {
@@ -39,15 +27,6 @@ namespace CilindrWPF
 
             Serialize();
 
-            //Formules.Bi();
-            //Formules.A();
-            //Formules.Fo();
-            //Formules.TempDiff_Surface();
-            //Formules.TempDiff_Mass();
-            //Formules.TempDiff_Centr();
-
-            //GetCountValues();
-            
         }
 
         public int Valid(string s)
@@ -130,6 +109,7 @@ namespace CilindrWPF
                     Doc.SaveAs(patch);
                 }
             }
+            
         }
 
         private void ReportTemp_Click(object sender, RoutedEventArgs e)

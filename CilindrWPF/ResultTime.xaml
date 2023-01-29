@@ -7,17 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="690" d:DesignWidth="950">
     <Grid Background="#F6F6F6">
-        <StackPanel>
-            <Label Content="Относительная разность температур на поверхности цилиндра Θп" HorizontalAlignment="Left" Margin="70,65,0,0" FontSize="18"></Label>
-            <TextBox x:Name="T_DS" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
-            <Label Content="Число теплового подобия Bi" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
+        <StackPanel>           
+            <Label Content="Число теплового подобия Bi" HorizontalAlignment="Left" Margin="70,65,0,0" FontSize="18"></Label>
             <TextBox x:Name="Bi" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Коэффициент температуропроводности материала а, м2/с" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
             <TextBox x:Name="A" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Время нагрева цилиндра до заданной конечной температуры τ, с" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
             <TextBox x:Name="TH" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
-            
-            <Button x:Name="ReportTemp" Content="Сохранить отчет" HorizontalAlignment="Center" Margin="0,55,0,0" FontSize="20" Background="DarkRed" Width="250" Height="45" BorderBrush="DarkRed"></Button>
+            <Label Content="Относительная разность температур на поверхности цилиндра Θп" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18" Visibility="Hidden"></Label>
+            <TextBox x:Name="T_DS" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Transparent" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True" Visibility="Hidden"></TextBox>
+
+            <Button x:Name="ReportTime" Content="Сохранить отчет" HorizontalAlignment="Center" Margin="0,5,0,0" FontSize="20" Background="DarkRed" Width="250" Height="45" BorderBrush="DarkRed" Click="ReportTime_Click"></Button>
 
         </StackPanel>
     </Grid>

@@ -26,6 +26,9 @@ namespace CilindrWPF
 
             TempHeat.TempHeat = TempResult;
             TempResult.Initial = TempHeat;
+
+            TimeHeat.TimeHeat = TimeResult;
+            TimeResult.Initial = TimeHeat;
         }
 
         private void Info_Click(object sender, RoutedEventArgs e)
