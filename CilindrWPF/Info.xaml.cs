@@ -24,5 +24,10 @@ namespace CilindrWPF
         {
             InitializeComponent();
         }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("Руководство пользователя.pdf");
+        }
     }
 }

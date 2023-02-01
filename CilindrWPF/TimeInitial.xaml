@@ -9,7 +9,7 @@
     <Grid Background="#F6F6F6">
         <StackPanel>
             <Label Content="Радиус цилиндра r, м" HorizontalAlignment="Left" Margin="70,65,0,0" FontSize="18"></Label>
-            <TextBox x:Name="R" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="R" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" PreviewTextInput="R_PreviewTextInput"></TextBox>
             <Label Content="Материал цилиндра" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
             <ComboBox x:Name="material" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" SelectionChanged="material_SelectionChanged_1">
                 <ComboBoxItem Name="Chygyn">Чугун</ComboBoxItem>
@@ -24,13 +24,13 @@
             <Label Content="Плотность материала цилиндра ρм, кг/м3" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
             <TextBox x:Name="roM" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" IsReadOnly="True"></TextBox>
             <Label Content="Коэффициент теплоотдачи α, Вт/(м2*К)" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="alfa" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="alfa" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" PreviewTextInput="R_PreviewTextInput"></TextBox>
             <Label Content="Температура печи tпеч, ⁰C" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="t_pech" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="t_pech" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" PreviewTextInput="R_PreviewTextInput"></TextBox>
             <Label Content="Начальная температура цилиндра tнач, ⁰C" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="t_begin" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="t_begin" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" PreviewTextInput="R_PreviewTextInput"></TextBox>
             <Label Content="Конечная температура нагрева цилиндра tкон, ⁰C" HorizontalAlignment="Left" Margin="70,10,0,0" FontSize="18"></Label>
-            <TextBox x:Name="t_end" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0"></TextBox>
+            <TextBox x:Name="t_end" HorizontalAlignment="Right" Width="250" Height="30" BorderBrush="Black" Background="Snow" FontSize="18" Margin="0,-27,70,0" PreviewTextInput="R_PreviewTextInput"></TextBox>
 
             <Button x:Name="CalcTime" Content="Расчет" HorizontalAlignment="Center" Margin="0,55,0,0" FontSize="20" Background="DarkRed" Width="250" Height="45" BorderBrush="DarkRed" Click="CalcTime_Click"></Button>
 

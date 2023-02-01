@@ -20,16 +20,21 @@ namespace CilindrWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public TempInitial Initial;
+
         public MainWindow()
         {
             InitializeComponent();
 
+            Initial = new TempInitial();
+            
             TempHeat.TempHeat = TempResult;
             TempResult.Initial = TempHeat;
 
             TimeHeat.TimeHeat = TimeResult;
             TimeResult.Initial = TimeHeat;
-        }
+           
+        }       
 
         private void Info_Click(object sender, RoutedEventArgs e)
         {
@@ -87,6 +92,11 @@ namespace CilindrWPF
             TimeResult.Visibility = Visibility.Visible;
             Time.Visibility = Visibility.Visible;
             TimeRes.Visibility = Visibility.Hidden;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

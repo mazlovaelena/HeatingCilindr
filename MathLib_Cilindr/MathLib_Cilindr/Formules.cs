@@ -1,15 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace MathLib_Cilindr
 {
-    [Serializable]
-    public class Formules
+    public interface IDataErrorInfo
     {
+        string Error { get; }
+        string this[string textBox] { get; }
+    }
+
+    [Serializable]
+    public class Formules : IDataErrorInfo
+    {
+        public string this[string textBox]
+        {
+            get
+            {
+                string error = String.Empty;
+                switch (textBox)
+                {
+                    case "r":
+                        if (r is double)
+                        {
+                            
+                        }
+                        else
+                        {
+                            error = "Введите число с разделителем запятая!";
+                        }
+                        break;
+                    case "alfa":
+                        if (alfa is double)
+                        {
+
+                        }
+                        else
+                        {
+                            error = "Введите число с разделителем запятая!";
+                        }
+                        break;
+                    case "Position":
+                        //Обработка ошибок для свойства Position
+                        break;
+                }
+                return error;
+            }
+        }
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
         public Formules(double _r, double _lamdaM, double _cM, double _roM, double _alfa, double _t, string _material, double _tp, double _tend, double _tbegin)
         {
             r = _r;
@@ -22,7 +68,7 @@ namespace MathLib_Cilindr
             t_p = _tp;
             t_end = _tend;
             t_beg = _tbegin;
-        }
+        }    
        
         #region ИСХОДНЫЕ ДАННЫЕ (ПРЯМАЯ ЗАДАЧА)
         //ИСХОДНЫЕ ДАННЫЕ (РАСЧЕТ ТЕМПЕРАТУР НАГРЕВА ЦИЛИНДРА)

@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Newtonsoft.Json;
-
+using System.Linq;
 
 namespace CilindrWPF
 {
@@ -16,27 +16,34 @@ namespace CilindrWPF
     /// </summary>
     public partial class TempInitial : UserControl
     {
-        public TempInitial()
-        {
-            InitializeComponent();
-
-            GetDefaultValues();
-        }
-
         public Formules Formules;
         public ResultTemp TempHeat;
-       
 
+        public TempInitial()
+        {
+            InitializeComponent();           
+
+            GetDefaultValues();
+        }       
+
+        //Правило валидации строки
         public int Valid(string s)
         {
             string substr = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString();
             int count = (s.Length - s.Replace(substr, "").Length) / substr.Length;
             return count;
         }
-
-        public void TextboxValidation(object sender, TextCompositionEventArgs e)
+        
+        //Метод ограничения ввода в поле (не позволяет пользователю вводить буквы и лишние символы в поля ввода)
+        private void R_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !(Char.IsDigit(e.Text, 0) || ((e.Text == System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString()) && (Valid(((TextBox)sender).Text) < 1)));
+           
+            double val;
+            if (!Double.TryParse(e.Text, out val) && e.Text != ",")
+            {
+                e.Handled = true; 
+            }
         }
 
         public void Deserialize()
@@ -61,32 +68,7 @@ namespace CilindrWPF
             { 
 
             }
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<double> textBoxesValues = new List<double>();
-
-            try
-            {
-                textBoxesValues.Add(Convert.ToDouble(R.Text));
-                textBoxesValues.Add(Double.Parse(material.Text));
-                textBoxesValues.Add(Convert.ToDouble(lamdaM.Text));
-                textBoxesValues.Add(Convert.ToDouble(cM.Text));
-                textBoxesValues.Add(Convert.ToDouble(roM.Text));
-                textBoxesValues.Add(Convert.ToDouble(alfa.Text));
-                textBoxesValues.Add(Convert.ToDouble(t.Text));
-             
-            }
-            catch
-            {
-                if (textBoxesValues.Count == 0)
-                {
-                    GetDefaultValues(); 
-                }
-            }
-
-        }      
+        }    
 
         public void Serialize()
         {
@@ -106,6 +88,7 @@ namespace CilindrWPF
             }
         }
 
+        //Метод подстановки соответсвующих коэффициентов при выборе материала
         private void material_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(material.SelectedItem == Stal)
@@ -134,6 +117,8 @@ namespace CilindrWPF
             }
             
         }
+
+        //Получение введенных значений для расчета
         public void GetSourceValues()
         {
             double _r = Convert.ToDouble(R.Text);
@@ -147,10 +132,11 @@ namespace CilindrWPF
             double _tbegin = 0;
             double _tend = 0;
 
-            Formules = new Formules(_r, _lamdaM, _cM, _roM, _alfa, _t, _material, _tp, _tend, _tbegin);
+            Formules = new Formules(_r, _lamdaM, _cM, _roM, _alfa, _t, _material, _tp, _tend, _tbegin);      
          
         }
 
+        //Метод вывода значений по умолчанию (при первом запуске программы)
         public void GetDefaultValues()
         {
             R.Text = "0,055";
@@ -162,6 +148,7 @@ namespace CilindrWPF
             t.Text = "581";
         }
 
+        //Метод нажатия на кнопку "Расчет"
         private void CalcTemp_Click(object sender, RoutedEventArgs e)
         {
             List<string> textBoxesValues = new List<string>();
@@ -174,6 +161,7 @@ namespace CilindrWPF
             textBoxesValues.Add(alfa.Text);
             textBoxesValues.Add(t.Text);
            
+            //Проверка наличия пустых полей
             bool IsValuesCorrect = true;
 
             foreach (string s in textBoxesValues)
@@ -190,7 +178,7 @@ namespace CilindrWPF
 
                 if (counter >= 1 || s == String.Empty || s == ",")
                 {
-                    MessageBox.Show("Заполните все поля!", "ВНИМАНИЕ", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    MessageBox.Show("Заполните все поля и/или удалите пробелы!", "ВНИМАНИЕ", MessageBoxButton.OK, MessageBoxImage.Stop);
                     IsValuesCorrect = false;
 
                     counter = 0;
@@ -200,7 +188,7 @@ namespace CilindrWPF
 
             if (IsValuesCorrect == true)
             {
-                GetSourceValues();
+                GetSourceValues();                 
 
                 Serialize();
 
@@ -218,6 +206,6 @@ namespace CilindrWPF
            
         }
 
-        
+       
     }
 }

@@ -8,8 +8,8 @@
              d:DesignHeight="690" d:DesignWidth="950">
     <Grid Background="#F6F6F6">
         <StackPanel>
-            <RichTextBox Height="690" Width="950"  IsReadOnly="True" Margin="0,10,0,10">
-                <FlowDocument FontSize="21">
+            <RichTextBox Height="620" Width="950"  IsReadOnly="True" Margin="0,10,0,10" BorderBrush="Transparent">
+                <FlowDocument FontSize="20">
                     <Paragraph TextAlignment="Justify">
                         <Run Text="     Нагрев или охлаждение любого твердого тела сопровождается изменением его температурного поля в течение времени воздействия на тело теплового потока. Это явление носит название нестационарной теплопроводности. Решение инженерных задач нестационарной теплопроводности связано с определением температурного поля тела при заданном времени воздействия теплового потока или нахождением времени тепловой обработки тела при достижении температурные полем заданного по технологии значения. Такие задачи решают с помощью дифференциального уравнения теплопроводности Фурье, вид которого зависит от формы тела и применяемой системы координат.">
                             
@@ -35,6 +35,7 @@ t_пов - температура поверхности тела.
                     </Paragraph>
                 </FlowDocument>
         </RichTextBox>
+            <Button x:Name="About" Content="Руководство пользователя" HorizontalAlignment="Center" Margin="0,-8,0,2" FontSize="20" Background="DarkRed" Width="400" Height="45" BorderBrush="DarkRed" Click="About_Click"></Button>
         </StackPanel>
     </Grid>
 </UserControl>
