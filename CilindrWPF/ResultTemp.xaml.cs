@@ -9,6 +9,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using SpreadsheetLight;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace CilindrWPF
 {
@@ -25,21 +27,13 @@ namespace CilindrWPF
         {
             InitializeComponent();
 
-            Serialize();
-
+            Serialize();           
         }
 
-        public int Valid(string s)
-        {
-            string substr = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString();
-            int count = (s.Length - s.Replace(substr, "").Length) / substr.Length;
-            return count;
-        }
-
-        public void TextboxValidation(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0) || ((e.Text == System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString()) && (Valid(((System.Windows.Controls.TextBox)sender).Text) < 1)));
-        }
+        //Инициализация параметров для создания графика
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> Formatter { get; set; }
 
         public void Serialize()
         {
@@ -58,6 +52,7 @@ namespace CilindrWPF
             formatter.Serialize(fs, Data);
         }
 
+        //Вывод расчетных значений показателей
         public void GetCountValues()
         {
             Bi.Text = Math.Round(Formules.Bi(), 1).ToString();
@@ -66,8 +61,28 @@ namespace CilindrWPF
             TDS.Text = Math.Round(Formules.TempDiff_Surface(), 8).ToString();
             TDM.Text = Math.Round(Formules.TempDiff_Mass(), 8).ToString();
             TDC.Text = Math.Round(Formules.TempDiff_Centr(), 8).ToString();
+
+            CreateChart();
         }
 
+        //Создание графика
+        public void CreateChart()
+        {
+            SeriesCollection = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Values = new ChartValues<double> { Double.Parse(TDC.Text), Double.Parse(TDM.Text), Double.Parse(TDS.Text) }
+                }
+            };
+
+            Labels = new[] { "Для оси цилиндра", "Для массы цилиндра", "На поверхности цилиндра" };
+            Formatter = value => value.ToString("N");
+
+            DataContext = this;
+        }
+
+        //Метод создания отчетного файла Excel
         public void CreateFile(string patch)
         {
             if(patch != string.Empty)
@@ -102,7 +117,7 @@ namespace CilindrWPF
                     Doc.SetCellValue("D6", "Относительная разность температур для массы цилиндра Θм");
                     Doc.SetCellValue("E6", TDM.Text);
                     Doc.SetCellValue("D7", "Относительная разность температур на поверхности цилиндра Θп");
-                    Doc.SetCellValue("E7", TDM.Text);
+                    Doc.SetCellValue("E7", TDS.Text);
 
                     Doc.AutoFitColumn(1, 6);
                    
@@ -112,6 +127,7 @@ namespace CilindrWPF
             
         }
 
+        //Метод нажатия на кнопку "Сохранить отчет"
         private void ReportTemp_Click(object sender, RoutedEventArgs e)
         {
             try
