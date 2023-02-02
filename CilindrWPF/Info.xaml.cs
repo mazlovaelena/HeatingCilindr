@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace CilindrWPF
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            string path = "C:/Users/мечта/Desktop/Heating/CilindrWPF/Руководство_пользователя.pdf";
+            string path = "Руководство_пользователя.pdf";
             Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
         }
     }

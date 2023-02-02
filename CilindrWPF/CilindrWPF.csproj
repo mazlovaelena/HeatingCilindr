@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <None Remove="icon.ico" />
+    <None Remove="Руководство_пользователя.pdf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +34,9 @@
     <Resource Include="icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <EmbeddedResource Include="Руководство_пользователя.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
