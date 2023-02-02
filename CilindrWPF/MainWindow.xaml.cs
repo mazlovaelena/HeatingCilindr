@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,7 @@ namespace CilindrWPF
             TempRes.Visibility = Visibility.Hidden;
             Time.Visibility = Visibility.Visible;
             TimeRes.Visibility = Visibility.Hidden;
+
         }
 
         private void Temp_Click(object sender, RoutedEventArgs e)

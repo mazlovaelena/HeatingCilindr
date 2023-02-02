@@ -27,7 +27,8 @@ namespace CilindrWPF
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("Руководство пользователя.pdf");
+            string path = "C:/Users/мечта/Desktop/Heating/CilindrWPF/Руководство_пользователя.pdf";
+            Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
         }
     }
 }
