@@ -5,11 +5,8 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <StartupObject>CilindrWPF.App</StartupObject>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="keys.png" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="LiveCharts.Wpf.Core" Version="0.9.8" />
@@ -21,12 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MathLib_Cilindr\MathLib_Cilindr\MathLib_Cilindr.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="keys.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
 
   <ItemGroup>
