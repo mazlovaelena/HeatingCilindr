@@ -9,53 +9,9 @@ using Newtonsoft.Json;
 
 namespace MathLib_Cilindr
 {
-    public interface IDataErrorInfo
-    {
-        string Error { get; }
-        string this[string textBox] { get; }
-    }
-
-    [Serializable]
-    public class Formules : IDataErrorInfo
-    {
-        public string this[string textBox]
-        {
-            get
-            {
-                string error = String.Empty;
-                switch (textBox)
-                {
-                    case "r":
-                        if (r is double)
-                        {
-                            
-                        }
-                        else
-                        {
-                            error = "Введите число с разделителем запятая!";
-                        }
-                        break;
-                    case "alfa":
-                        if (alfa is double)
-                        {
-
-                        }
-                        else
-                        {
-                            error = "Введите число с разделителем запятая!";
-                        }
-                        break;
-                    case "Position":
-                        //Обработка ошибок для свойства Position
-                        break;
-                }
-                return error;
-            }
-        }
-        public string Error
-        {
-            get { throw new NotImplementedException(); }
-        }
+    //Экземпляр класса
+    public class Formules 
+    {        
         public Formules(double _r, double _lamdaM, double _cM, double _roM, double _alfa, double _t, string _material, double _tp, double _tend, double _tbegin)
         {
             r = _r;
@@ -791,11 +747,5 @@ namespace MathLib_Cilindr
 
         #endregion РАСЧЕТ ВРЕМЕНИ НАГРЕВА ЦИЛИНДРА
 
-        public static FieldInfo[] GetFieldInfo()
-        {
-            FieldInfo[] fields = typeof(Formules).GetFields();
-
-            return fields;
-        }
     }
 }
