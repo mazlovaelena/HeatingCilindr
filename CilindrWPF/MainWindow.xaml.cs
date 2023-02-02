@@ -57,7 +57,9 @@ namespace CilindrWPF
             TempResult.Visibility = Visibility.Hidden;
             TimeResult.Visibility = Visibility.Hidden;
             Temp.Visibility = Visibility.Hidden;
-            TempRes.Visibility = Visibility.Visible;
+            TempRes.Visibility = Visibility.Visible;            
+            Time.Visibility = Visibility.Visible;
+            TimeRes.Visibility = Visibility.Hidden;
         }
 
         private void Time_Click(object sender, RoutedEventArgs e)
@@ -69,6 +71,8 @@ namespace CilindrWPF
             TimeResult.Visibility = Visibility.Hidden;
             Time.Visibility = Visibility.Hidden;
             TimeRes.Visibility = Visibility.Visible;
+            Temp.Visibility = Visibility.Visible;
+            TempRes.Visibility = Visibility.Hidden;
         }
 
 
@@ -96,6 +100,8 @@ namespace CilindrWPF
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            TempHeat.GetInitialFile();
+            TimeHeat.GetInitialFile();
             Application.Current.Shutdown();
         }
     }
