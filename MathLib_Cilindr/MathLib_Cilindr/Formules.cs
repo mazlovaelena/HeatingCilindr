@@ -9,9 +9,10 @@ using Newtonsoft.Json;
 
 namespace MathLib_Cilindr
 {
-    //Экземпляр класса
+    
     public class Formules 
-    {        
+    {
+        //Экземпляр класса
         public Formules(double _r, double _lamdaM, double _cM, double _roM, double _alfa, double _t, string _material, double _tp, double _tend, double _tbegin)
         {
             r = _r;
