@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Расчет нагрева цилиндра" Height="800" Width="1000" Icon="/icon.ico" Closed="Window_Closed">
+        Title="Расчет нагрева цилиндра" Height="800" Width="1000" Icon="/keys.png" Closed="Window_Closed">
     <Grid x:Name="Grid" Background="#787878	">
         <StackPanel>
             

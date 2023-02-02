@@ -25,32 +25,13 @@ namespace CilindrWPF
 
         public ResultTemp()
         {
-            InitializeComponent();
-
-            Serialize();           
+            InitializeComponent();         
         }
 
         //Инициализация параметров для создания графика
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> Formatter { get; set; }
-
-        public void Serialize()
-        {
-            FieldInfo[] fields = Formules.GetFieldInfo();
-
-            Dictionary<string, object> Data = new();
-
-            foreach (FieldInfo Info in fields)
-            {
-                Data.Add(Info.Name, Info.GetValue(Formules));
-            }
-
-            JsonSerializer formatter = new();
-
-            using StreamWriter fs = new("InputTemp.txt");
-            formatter.Serialize(fs, Data);
-        }
 
         //Вывод расчетных значений показателей
         public void GetCountValues()

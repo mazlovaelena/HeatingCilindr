@@ -21,9 +21,32 @@ namespace CilindrWPF
 
         public TempInitial()
         {
-            InitializeComponent();           
+            InitializeComponent();
 
-            GetDefaultValues();
+            List<double> textBoxesValues = new List<double>();
+            try
+            {
+                ReadInitialFile();
+
+                //Обработка ошибки при отсутствии файла исходных данных
+                textBoxesValues.Add(Convert.ToDouble(R.Text));
+                textBoxesValues.Add(Double.Parse(material.Text));
+                textBoxesValues.Add(Convert.ToDouble(lamdaM.Text));
+                textBoxesValues.Add(Convert.ToDouble(cM.Text));
+                textBoxesValues.Add(Convert.ToDouble(roM.Text));
+                textBoxesValues.Add(Convert.ToDouble(alfa.Text));
+                textBoxesValues.Add(Convert.ToDouble(t.Text));
+
+
+            }
+            catch
+            {
+                if (textBoxesValues.Count == 0)
+                {
+                    GetDefaultValues();
+                }
+
+            }
         }       
 
         //Правило валидации строки
@@ -46,45 +69,74 @@ namespace CilindrWPF
             }
         }
 
-        public void Deserialize()
+        //Метод сохранения исходных данных во внешний файл
+        public async void GetInitialFile()
         {
-            try             
+            Dictionary<string, object> Init = new Dictionary<string, object>();
+            var init = new Dictionary<string, object>()
             {
-                JsonSerializer formatter = new JsonSerializer();
-                using (StreamReader fs = new StreamReader("InputTemp.txt"))
-                {
-                    Dictionary<string, object> Data = (Dictionary<string, object>)formatter.Deserialize(fs, typeof(Dictionary<string, object>));
+                {"r", R.Text },
+                {"material", material.Text },
+                {"lamdaM", lamdaM.Text },
+                {"cM", cM.Text },
+                {"roM", roM.Text},
+                {"alfa", alfa.Text },
+                {"t", t.Text },
 
-                    R.Text = Convert.ToDouble(Data["r"]).ToString();
-                    material.Text = Convert.ToString(Data["material"]);
-                    lamdaM.Text = Convert.ToDouble(Data["lamdaM"]).ToString();
-                    cM.Text = Convert.ToDouble(Data["cM"]).ToString();
-                    roM.Text = Convert.ToDouble(Data["roM"]).ToString();
-                    alfa.Text = Convert.ToDouble(Data["alfa"]).ToString();
-                    t.Text = Convert.ToDouble(Data["t"]).ToString();
+            };
+
+            try
+            {
+                using (StreamWriter fs = new StreamWriter("InputTemp.txt"))
+                {
+                    string[] strArray = init.Select(x => ("" + x.Key + "=" + x.Value + ";")).ToArray();
+
+                    foreach (string s in strArray)
+                    {
+                        char[] d = s.ToCharArray();
+                        await fs.WriteAsync(d);
+                    }
+
+                    fs.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        //Метод чтения данных из внешнего файла
+        public async void ReadInitialFile()
+        {
+            try
+            {
+                string path = "InputTemp.txt";
+
+                using (StreamReader fstream = new StreamReader(path))
+                {
+                    string v = await fstream.ReadToEndAsync();
+                    string d = v.ToString();
+                    var dict = d.Split(';')
+                    .Select(part => part.Split('='))
+                    .Where(part => part.Length == 2)
+                    .ToDictionary(sp => sp[0], sp => sp[1]);
+
+                    R.Text = Convert.ToDouble(dict["r"]).ToString();
+                    material.Text = Convert.ToString(dict["material"]);
+                    lamdaM.Text = Convert.ToDouble(dict["lamdaM"]).ToString();
+                    cM.Text = Convert.ToDouble(dict["cM"]).ToString();
+                    roM.Text = Convert.ToDouble(dict["roM"]).ToString();
+                    alfa.Text = Convert.ToDouble(dict["alfa"]).ToString();
+                    t.Text = Convert.ToDouble(dict["t"]).ToString();
+
                 }
             }
-            catch 
-            { 
-
-            }
-        }    
-
-        public void Serialize()
-        {
-            FieldInfo[] fields = Formules.GetFieldInfo();
-
-            Dictionary<string, object> Data = new Dictionary<string, object>();
-
-            foreach (FieldInfo Info in fields)
+            catch
             {
-                Data.Add(Info.Name, Info.GetValue(Formules));
-            }
 
-            JsonSerializer formatter = new JsonSerializer();
-            using (StreamWriter fs = new StreamWriter("InputTemp.txt"))
-            {
-                formatter.Serialize(fs, Data);
             }
         }
 
@@ -188,9 +240,9 @@ namespace CilindrWPF
 
             if (IsValuesCorrect == true)
             {
-                GetSourceValues();                 
+                GetSourceValues();
 
-                Serialize();
+                GetInitialFile();
 
                 Formules.Bi();
                 Formules.A();

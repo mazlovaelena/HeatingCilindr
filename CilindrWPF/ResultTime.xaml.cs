@@ -32,18 +32,7 @@ namespace CilindrWPF
 
         public TimeInitial Initial;
 
-        public int Valid(string s)
-        {
-            string substr = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString();
-            int count = (s.Length - s.Replace(substr, "").Length) / substr.Length;
-            return count;
-        }
-
-        public void TextboxValidation(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0) || ((e.Text == System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString()) && (Valid(((System.Windows.Controls.TextBox)sender).Text) < 1)));
-        }
-
+        //Вывод расчетных значений показателей
         public void GetCountValues()
         {
             Bi.Text = Math.Round(Formules.Bi(), 1).ToString();
@@ -52,6 +41,7 @@ namespace CilindrWPF
             TH.Text = Math.Round(Formules.Time_heath(), 0).ToString("#,##0");
         }
 
+        //Метод создания отчетного файла Excel
         public void CreateFile(string patch)
         {
             if (patch != string.Empty)
@@ -94,6 +84,7 @@ namespace CilindrWPF
 
         }
 
+        //Метод нажатия на кнопку "Сохранить отчет"
         private void ReportTime_Click(object sender, RoutedEventArgs e)
         {
             try

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,30 @@ namespace CilindrWPF
         {
             InitializeComponent();
 
-            GetDefaultValues();
+            List<double> textBoxesValues = new List<double>();
+            try
+            {
+                ReadInitialFile();
+
+                //Обработка ошибки при отсутствии файла исходных данных
+                textBoxesValues.Add(Convert.ToDouble(R.Text));
+                textBoxesValues.Add(Double.Parse(material.Text));
+                textBoxesValues.Add(Convert.ToDouble(lamdaM.Text));
+                textBoxesValues.Add(Convert.ToDouble(cM.Text));
+                textBoxesValues.Add(Convert.ToDouble(roM.Text));
+                textBoxesValues.Add(Convert.ToDouble(alfa.Text));
+                textBoxesValues.Add(Convert.ToDouble(t_pech.Text));
+                textBoxesValues.Add(Convert.ToDouble(t_begin.Text));
+                textBoxesValues.Add(Convert.ToDouble(t_end.Text));
+            }
+            catch
+            {
+                if (textBoxesValues.Count == 0)
+                {
+                    GetDefaultValues();
+                }
+
+            }
         }
 
         public Formules Formules;
@@ -49,8 +73,85 @@ namespace CilindrWPF
             {
                 e.Handled = true;
             }
-        }       
-        
+        }
+
+        //Метод сохранения исходных данных во внешний файл
+        public async void GetInitialFile()
+        {
+            Dictionary<string, object> Init = new Dictionary<string, object>();
+            var init = new Dictionary<string, object>()
+            {
+                {"r", R.Text },
+                {"material", material.Text },
+                {"lamdaM", lamdaM.Text },
+                {"cM", cM.Text },
+                {"roM", roM.Text},
+                {"alfa", alfa.Text },
+                {"t_pech", t_pech.Text },
+                {"t_begin", t_begin.Text },
+                {"t_end", t_end.Text }
+
+            };
+
+            try
+            {
+                using (StreamWriter fs = new StreamWriter("InputTime.txt"))
+                {
+                    string[] strArray = init.Select(x => ("" + x.Key + "=" + x.Value + ";")).ToArray();
+
+                    foreach (string s in strArray)
+                    {
+                        char[] d = s.ToCharArray();
+                        await fs.WriteAsync(d);
+                    }
+
+                    fs.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        //Метод чтения данных из внешнего файла
+        public async void ReadInitialFile()
+        {
+            try
+            {
+                string path = "InputTime.txt";
+
+                using (StreamReader fstream = new StreamReader(path))
+                {
+                    string v = await fstream.ReadToEndAsync();
+                    string d = v.ToString();
+                    var dict = d.Split(';')
+                    .Select(part => part.Split('='))
+                    .Where(part => part.Length == 2)
+                    .ToDictionary(sp => sp[0], sp => sp[1]);
+
+
+                    R.Text = Convert.ToDouble(dict["r"]).ToString();
+                    material.Text = Convert.ToString(dict["material"]);
+                    lamdaM.Text = Convert.ToDouble(dict["lamdaM"]).ToString();
+                    cM.Text = Convert.ToDouble(dict["cM"]).ToString();
+                    roM.Text = Convert.ToDouble(dict["roM"]).ToString();
+                    alfa.Text = Convert.ToDouble(dict["alfa"]).ToString();
+                    t_pech.Text = Convert.ToDouble(dict["t_pech"]).ToString();
+                    t_begin.Text = Convert.ToDouble(dict["t_begin"]).ToString();
+                    t_end.Text = Convert.ToDouble(dict["t_end"]).ToString();
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+
         //Метод подстановки коэффициентов при выборе материала
         private void material_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
@@ -155,7 +256,7 @@ namespace CilindrWPF
             {
                 GetSourceValues();
 
-                //Serialize();
+                GetInitialFile();
 
                 Formules.Bi();
                 Formules.A();
